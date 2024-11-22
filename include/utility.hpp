@@ -19,6 +19,15 @@
 namespace matlib {
 
 template<typename T>
+auto epsilon = T{};
+
+template<>
+inline float epsilon<float> = 1e-8f;
+
+template<>
+inline double epsilon<double> = 1e-8;
+
+template<typename T>
 bool MultiplyOverflow(T a, T b) {
     if (a == 0 || b == 0) return false;
     if (a > 0 && b > 0) {
@@ -28,6 +37,21 @@ bool MultiplyOverflow(T a, T b) {
     } else {
         return b < std::numeric_limits<T>::min() / a;
     }
+}
+
+template<typename T>
+inline bool ValueEq(T a, T b) {
+    return a == b;
+}
+
+template<>
+inline bool ValueEq<float>(float a, float b) {
+    return (std::abs(a - b) < epsilon<float>);
+}
+
+template<>
+inline bool ValueEq<double>(double a, double b) {
+    return (std::abs(a - b) < epsilon<double>);
 }
 
 }

@@ -1,5 +1,6 @@
 D:/src/my_rust_mat/matlib_cpp/build/CMakeFiles/compile_test.dir
 D:/src/my_rust_mat/matlib_cpp/build/CMakeFiles/access_test.dir
 D:/src/my_rust_mat/matlib_cpp/build/CMakeFiles/computation_test.dir
+D:/src/my_rust_mat/matlib_cpp/build/CMakeFiles/slice_test.dir
 D:/src/my_rust_mat/matlib_cpp/build/CMakeFiles/edit_cache.dir
 D:/src/my_rust_mat/matlib_cpp/build/CMakeFiles/rebuild_cache.dir

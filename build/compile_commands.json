@@ -16,5 +16,11 @@
   "command": "D:\\dev\\msys64\\mingw64\\bin\\clang++.exe  @CMakeFiles/computation_test.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\computation_test.dir\\test\\computation_test.cc.obj -c D:\\src\\my_rust_mat\\matlib_cpp\\test\\computation_test.cc",
   "file": "D:/src/my_rust_mat/matlib_cpp/test/computation_test.cc",
   "output": "CMakeFiles/computation_test.dir/test/computation_test.cc.obj"
+},
+{
+  "directory": "D:/src/my_rust_mat/matlib_cpp/build",
+  "command": "D:\\dev\\msys64\\mingw64\\bin\\clang++.exe  @CMakeFiles/slice_test.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\slice_test.dir\\test\\slice_test.cc.obj -c D:\\src\\my_rust_mat\\matlib_cpp\\test\\slice_test.cc",
+  "file": "D:/src/my_rust_mat/matlib_cpp/test/slice_test.cc",
+  "output": "CMakeFiles/slice_test.dir/test/slice_test.cc.obj"
 }
 ]

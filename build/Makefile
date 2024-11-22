@@ -154,6 +154,19 @@ computation_test/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\computation_test.dir\build.make CMakeFiles/computation_test.dir/build
 .PHONY : computation_test/fast
 
+#=============================================================================
+# Target rules for targets named slice_test
+
+# Build rule for target.
+slice_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 slice_test
+.PHONY : slice_test
+
+# fast build rule for target.
+slice_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\slice_test.dir\build.make CMakeFiles/slice_test.dir/build
+.PHONY : slice_test/fast
+
 test/access_test.obj: test/access_test.cc.obj
 .PHONY : test/access_test.obj
 
@@ -226,6 +239,30 @@ test/computation_test.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\computation_test.dir\build.make CMakeFiles/computation_test.dir/test/computation_test.cc.s
 .PHONY : test/computation_test.cc.s
 
+test/slice_test.obj: test/slice_test.cc.obj
+.PHONY : test/slice_test.obj
+
+# target to build an object file
+test/slice_test.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\slice_test.dir\build.make CMakeFiles/slice_test.dir/test/slice_test.cc.obj
+.PHONY : test/slice_test.cc.obj
+
+test/slice_test.i: test/slice_test.cc.i
+.PHONY : test/slice_test.i
+
+# target to preprocess a source file
+test/slice_test.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\slice_test.dir\build.make CMakeFiles/slice_test.dir/test/slice_test.cc.i
+.PHONY : test/slice_test.cc.i
+
+test/slice_test.s: test/slice_test.cc.s
+.PHONY : test/slice_test.s
+
+# target to generate assembly for a file
+test/slice_test.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\slice_test.dir\build.make CMakeFiles/slice_test.dir/test/slice_test.cc.s
+.PHONY : test/slice_test.cc.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -237,6 +274,7 @@ help:
 	@echo ... access_test
 	@echo ... compile_test
 	@echo ... computation_test
+	@echo ... slice_test
 	@echo ... test/access_test.obj
 	@echo ... test/access_test.i
 	@echo ... test/access_test.s
@@ -246,6 +284,9 @@ help:
 	@echo ... test/computation_test.obj
 	@echo ... test/computation_test.i
 	@echo ... test/computation_test.s
+	@echo ... test/slice_test.obj
+	@echo ... test/slice_test.i
+	@echo ... test/slice_test.s
 .PHONY : help
 
 
