@@ -1,11 +1,9 @@
 {
+	"archive" : {},
 	"artifacts" : 
 	[
 		{
-			"path" : "computation_test.exe"
-		},
-		{
-			"path" : "computation_test.pdb"
+			"path" : "libcompile_test.a"
 		}
 	],
 	"backtrace" : 1,
@@ -13,7 +11,7 @@
 	{
 		"commands" : 
 		[
-			"add_executable",
+			"add_library",
 			"include_directories"
 		],
 		"files" : 
@@ -28,7 +26,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 15,
+				"line" : 13,
 				"parent" : 0
 			},
 			{
@@ -45,14 +43,14 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -std=gnu++17"
+					"fragment" : "-g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk"
 				}
 			],
 			"includes" : 
 			[
 				{
 					"backtrace" : 2,
-					"path" : "D:/src/my_rust_mat/matlib_cpp/include"
+					"path" : "/Users/mine268/Source/mat/include"
 				}
 			],
 			"language" : "CXX",
@@ -70,28 +68,9 @@
 			]
 		}
 	],
-	"id" : "computation_test::@6890427a1f51a3e7e1df",
-	"link" : 
-	{
-		"commandFragments" : 
-		[
-			{
-				"fragment" : "-g",
-				"role" : "flags"
-			},
-			{
-				"fragment" : "",
-				"role" : "flags"
-			},
-			{
-				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
-				"role" : "libraries"
-			}
-		],
-		"language" : "CXX"
-	},
-	"name" : "computation_test",
-	"nameOnDisk" : "computation_test.exe",
+	"id" : "compile_test::@6890427a1f51a3e7e1df",
+	"name" : "compile_test",
+	"nameOnDisk" : "libcompile_test.a",
 	"paths" : 
 	{
 		"build" : ".",
@@ -112,9 +91,9 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "test/computation_test.cc",
+			"path" : "test/compile_test.cc",
 			"sourceGroupIndex" : 0
 		}
 	],
-	"type" : "EXECUTABLE"
+	"type" : "STATIC_LIBRARY"
 }

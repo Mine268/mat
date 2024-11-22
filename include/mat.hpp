@@ -5,6 +5,7 @@
 #include <optional>
 #include <utility>
 #include <vector>
+#include <type_traits>
 
 // matlib
 #include "common.hpp"
@@ -75,8 +76,8 @@ class Slice {
     friend class Matrix<V>;
 // function
 public:
-    V& at(Size_T, Size_T);
-    const V& at(Size_T, Size_T) const;
+    std::conditional_t<std::is_const_v<MatType>, const V&, V&>
+        at(Size_T, Size_T);
 private:
     explicit Slice(Range, Range, MatType &);
 
@@ -92,7 +93,8 @@ private:
 
 /// Slice
 template<typename V, typename MatType>
-auto& Slice<V, MatType>::at(Size_T i, Size_T j) {
+std::conditional_t<std::is_const_v<MatType>, const V&, V&>
+Slice<V, MatType>::at(Size_T i, Size_T j) {
     ASSERT_MSG(i <= rowRange.b - rowRange.a && j <= colRange.b - colRange.a,
         "Bad indices out of slice.");
     auto r = i + rowRange.a;
@@ -108,8 +110,8 @@ Slice<V, MatType>::Slice(Range rowRange_, Range colRange_, MatType &mat)
     colRange = colRange_;
 }
 
-
 /// Matrix
+
 template<typename V>
 Slice<V, Matrix<V>> Matrix<V>::slice(Size_T ra, Size_T rb, Size_T ca, Size_T cb) {
     Range rowRange {ra, rb};
@@ -120,7 +122,7 @@ Slice<V, Matrix<V>> Matrix<V>::slice(Size_T ra, Size_T rb, Size_T ca, Size_T cb)
 }
 
 template<typename V>
-const Slice<V, const Matrix<V>> Matrix<V>::slice(Size_T ra, Size_T rb, Size_T ca, Size_T cb) const {
+Slice<V, const Matrix<V>> Matrix<V>::slice(Size_T ra, Size_T rb, Size_T ca, Size_T cb) const {
     Range rowRange {ra, rb};
     Range colRange {ca, cb};
     ASSERT_MSG(rowRange.b < shape.first && colRange.b < shape.second,

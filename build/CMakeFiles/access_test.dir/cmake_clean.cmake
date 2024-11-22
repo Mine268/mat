@@ -1,10 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/access_test.dir/test/access_test.cc.obj"
-  "CMakeFiles/access_test.dir/test/access_test.cc.obj.d"
-  "access_test.exe"
-  "access_test.exe.manifest"
+  "CMakeFiles/access_test.dir/test/access_test.cc.o"
+  "CMakeFiles/access_test.dir/test/access_test.cc.o.d"
+  "access_test"
   "access_test.pdb"
-  "libaccess_test.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

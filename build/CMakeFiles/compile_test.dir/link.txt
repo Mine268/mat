@@ -1,2 +1,2 @@
-D:\dev\msys64\mingw64\bin\llvm-ar.exe qc libcompile_test.a CMakeFiles/compile_test.dir/test/compile_test.cc.obj
-D:\dev\msys64\mingw64\bin\llvm-ranlib.exe libcompile_test.a
+/usr/bin/ar qc libcompile_test.a CMakeFiles/compile_test.dir/test/compile_test.cc.o
+/usr/bin/ranlib libcompile_test.a

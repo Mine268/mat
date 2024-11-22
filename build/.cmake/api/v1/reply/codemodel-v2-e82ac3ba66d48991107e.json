@@ -6,7 +6,7 @@
 			[
 				{
 					"build" : ".",
-					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.20"
@@ -45,28 +45,28 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "access_test::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-access_test-Debug-e864b259958e896bdf65.json",
+					"jsonFile" : "target-access_test-Debug-df5275a2e4149162df20.json",
 					"name" : "access_test",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "compile_test::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-compile_test-Debug-80db2646e0654f53c27a.json",
+					"jsonFile" : "target-compile_test-Debug-7d02aacb9afcec1222a0.json",
 					"name" : "compile_test",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "computation_test::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-computation_test-Debug-f20a0d3e69b90a276682.json",
+					"jsonFile" : "target-computation_test-Debug-b671a477ac6045d030f1.json",
 					"name" : "computation_test",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "slice_test::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-slice_test-Debug-489e2735369e81980c07.json",
+					"jsonFile" : "target-slice_test-Debug-f022f04009d95dec3fef.json",
 					"name" : "slice_test",
 					"projectIndex" : 0
 				}
@@ -76,12 +76,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "D:/src/my_rust_mat/matlib_cpp/build",
-		"source" : "D:/src/my_rust_mat/matlib_cpp"
+		"build" : "/Users/mine268/Source/mat/build",
+		"source" : "/Users/mine268/Source/mat"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 5
+		"minor" : 7
 	}
 }

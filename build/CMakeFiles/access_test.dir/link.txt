@@ -1,3 +1,1 @@
-"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\access_test.dir/objects.a
-D:\dev\msys64\mingw64\bin\llvm-ar.exe qc CMakeFiles\access_test.dir/objects.a @CMakeFiles\access_test.dir\objects1.rsp
-D:\dev\msys64\mingw64\bin\clang++.exe -g -Wl,--whole-archive CMakeFiles\access_test.dir/objects.a -Wl,--no-whole-archive -o access_test.exe -Wl,--out-implib,libaccess_test.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\access_test.dir\linkLibs.rsp
+/usr/bin/clang++ -g -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/access_test.dir/test/access_test.cc.o -o access_test

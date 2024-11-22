@@ -1,9 +1,7 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/slice_test.dir/test/slice_test.cc.obj"
-  "CMakeFiles/slice_test.dir/test/slice_test.cc.obj.d"
-  "libslice_test.dll.a"
-  "slice_test.exe"
-  "slice_test.exe.manifest"
+  "CMakeFiles/slice_test.dir/test/slice_test.cc.o"
+  "CMakeFiles/slice_test.dir/test/slice_test.cc.o.d"
+  "slice_test"
   "slice_test.pdb"
 )
 

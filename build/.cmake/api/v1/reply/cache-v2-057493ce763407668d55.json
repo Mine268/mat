@@ -15,7 +15,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "D:/dev/msys64/mingw64/bin/llvm-addr2line.exe"
+			"value" : "CMAKE_ADDR2LINE-NOTFOUND"
 		},
 		{
 			"name" : "CMAKE_AR",
@@ -31,7 +31,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "D:/dev/msys64/mingw64/bin/llvm-ar.exe"
+			"value" : "/usr/bin/ar"
 		},
 		{
 			"name" : "CMAKE_BUILD_TYPE",
@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "d:/src/my_rust_mat/matlib_cpp/build"
+			"value" : "/Users/mine268/Source/mat/build"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -79,7 +79,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "26"
+			"value" : "30"
 		},
 		{
 			"name" : "CMAKE_CACHE_PATCH_VERSION",
@@ -91,7 +91,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "3"
+			"value" : "2"
 		},
 		{
 			"name" : "CMAKE_COLOR_MAKEFILE",
@@ -119,7 +119,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Program Files/CMake/bin/cmake.exe"
+			"value" : "/opt/homebrew/Cellar/cmake/3.30.2/bin/cmake"
 		},
 		{
 			"name" : "CMAKE_CPACK_COMMAND",
@@ -131,7 +131,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Program Files/CMake/bin/cpack.exe"
+			"value" : "/opt/homebrew/Cellar/cmake/3.30.2/bin/cpack"
 		},
 		{
 			"name" : "CMAKE_CTEST_COMMAND",
@@ -143,7 +143,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Program Files/CMake/bin/ctest.exe"
+			"value" : "/opt/homebrew/Cellar/cmake/3.30.2/bin/ctest"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER",
@@ -155,59 +155,11 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
+					"value" : "CXX compiler"
 				}
 			],
-			"type" : "FILEPATH",
-			"value" : "D:/dev/msys64/mingw64/bin/clang++.exe"
-		},
-		{
-			"name" : "CMAKE_CXX_COMPILER_AR",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "LLVM archiver"
-				}
-			],
-			"type" : "FILEPATH",
-			"value" : "D:/dev/msys64/mingw64/bin/llvm-ar.exe"
-		},
-		{
-			"name" : "CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "`clang-scan-deps` dependency scanner"
-				}
-			],
-			"type" : "FILEPATH",
-			"value" : "D:/dev/msys64/mingw64/bin/clang-scan-deps.exe"
-		},
-		{
-			"name" : "CMAKE_CXX_COMPILER_RANLIB",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Generate index for LLVM archive"
-				}
-			],
-			"type" : "FILEPATH",
-			"value" : "D:/dev/msys64/mingw64/bin/llvm-ranlib.exe"
+			"type" : "STRING",
+			"value" : "/usr/bin/clang++"
 		},
 		{
 			"name" : "CMAKE_CXX_FLAGS",
@@ -290,22 +242,6 @@
 			"value" : "-O2 -g -DNDEBUG"
 		},
 		{
-			"name" : "CMAKE_CXX_STANDARD_LIBRARIES",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Libraries linked by default with all C++ applications."
-				}
-			],
-			"type" : "STRING",
-			"value" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32"
-		},
-		{
 			"name" : "CMAKE_C_COMPILER",
 			"properties" : 
 			[
@@ -315,7 +251,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "D:/dev/msys64/mingw64/bin/clang.exe"
+			"value" : "/usr/bin/clang"
 		},
 		{
 			"name" : "CMAKE_DLLTOOL",
@@ -331,7 +267,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "D:/dev/msys64/mingw64/bin/llvm-dlltool.exe"
+			"value" : "CMAKE_DLLTOOL-NOTFOUND"
 		},
 		{
 			"name" : "CMAKE_EDIT_COMMAND",
@@ -343,7 +279,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Program Files/CMake/bin/cmake-gui.exe"
+			"value" : "/opt/homebrew/Cellar/cmake/3.30.2/bin/ccmake"
 		},
 		{
 			"name" : "CMAKE_EXECUTABLE_FORMAT",
@@ -355,7 +291,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "Unknown"
+			"value" : "MACHO"
 		},
 		{
 			"name" : "CMAKE_EXE_LINKER_FLAGS",
@@ -471,7 +407,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "D:/src/my_rust_mat/matlib_cpp/build/CMakeFiles/pkgRedirects"
+			"value" : "/Users/mine268/Source/mat/build/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -483,7 +419,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "MinGW Makefiles"
+			"value" : "Unix Makefiles"
 		},
 		{
 			"name" : "CMAKE_GENERATOR_INSTANCE",
@@ -522,18 +458,6 @@
 			"value" : ""
 		},
 		{
-			"name" : "CMAKE_GNUtoMS",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Convert GNU import libraries to MS format (requires Visual Studio)"
-				}
-			],
-			"type" : "BOOL",
-			"value" : "OFF"
-		},
-		{
 			"name" : "CMAKE_HOME_DIRECTORY",
 			"properties" : 
 			[
@@ -543,7 +467,23 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "D:/src/my_rust_mat/matlib_cpp"
+			"value" : "/Users/mine268/Source/mat"
+		},
+		{
+			"name" : "CMAKE_INSTALL_NAME_TOOL",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a program."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "/usr/bin/install_name_tool"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -555,7 +495,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "C:/Program Files (x86)/gradflow"
+			"value" : "/usr/local"
 		},
 		{
 			"name" : "CMAKE_LINKER",
@@ -571,7 +511,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "D:/dev/msys64/mingw64/bin/ld.lld.exe"
+			"value" : "/usr/bin/ld"
 		},
 		{
 			"name" : "CMAKE_MAKE_PROGRAM",
@@ -587,7 +527,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "D:/dev/msys64/mingw64/bin/mingw32-make.exe"
+			"value" : "/usr/bin/make"
 		},
 		{
 			"name" : "CMAKE_MODULE_LINKER_FLAGS",
@@ -683,7 +623,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "D:/dev/msys64/mingw64/bin/llvm-nm.exe"
+			"value" : "/usr/bin/nm"
 		},
 		{
 			"name" : "CMAKE_NUMBER_OF_MAKEFILES",
@@ -711,7 +651,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "D:/dev/msys64/mingw64/bin/llvm-objcopy.exe"
+			"value" : "CMAKE_OBJCOPY-NOTFOUND"
 		},
 		{
 			"name" : "CMAKE_OBJDUMP",
@@ -727,7 +667,43 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "D:/dev/msys64/mingw64/bin/llvm-objdump.exe"
+			"value" : "/usr/bin/objdump"
+		},
+		{
+			"name" : "CMAKE_OSX_ARCHITECTURES",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Build architectures for OSX"
+				}
+			],
+			"type" : "STRING",
+			"value" : ""
+		},
+		{
+			"name" : "CMAKE_OSX_DEPLOYMENT_TARGET",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Minimum OS X version to target for deployment (at runtime); newer APIs weak linked. Set to empty string for default value."
+				}
+			],
+			"type" : "STRING",
+			"value" : ""
+		},
+		{
+			"name" : "CMAKE_OSX_SYSROOT",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The product will be built against the headers and libraries located inside the indicated SDK."
+				}
+			],
+			"type" : "PATH",
+			"value" : "/Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk"
 		},
 		{
 			"name" : "CMAKE_PLATFORM_INFO_INITIALIZED",
@@ -791,115 +767,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "D:/dev/msys64/mingw64/bin/llvm-ranlib.exe"
-		},
-		{
-			"name" : "CMAKE_RC_COMPILER",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "RC compiler"
-				}
-			],
-			"type" : "FILEPATH",
-			"value" : "D:/dev/msys64/mingw64/bin/windres.exe"
-		},
-		{
-			"name" : "CMAKE_RC_COMPILER_WORKS",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : ""
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "1"
-		},
-		{
-			"name" : "CMAKE_RC_FLAGS",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Flags for Windows Resource Compiler during all build types."
-				}
-			],
-			"type" : "STRING",
-			"value" : ""
-		},
-		{
-			"name" : "CMAKE_RC_FLAGS_DEBUG",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Flags for Windows Resource Compiler during DEBUG builds."
-				}
-			],
-			"type" : "STRING",
-			"value" : ""
-		},
-		{
-			"name" : "CMAKE_RC_FLAGS_MINSIZEREL",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Flags for Windows Resource Compiler during MINSIZEREL builds."
-				}
-			],
-			"type" : "STRING",
-			"value" : ""
-		},
-		{
-			"name" : "CMAKE_RC_FLAGS_RELEASE",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Flags for Windows Resource Compiler during RELEASE builds."
-				}
-			],
-			"type" : "STRING",
-			"value" : ""
-		},
-		{
-			"name" : "CMAKE_RC_FLAGS_RELWITHDEBINFO",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Flags for Windows Resource Compiler during RELWITHDEBINFO builds."
-				}
-			],
-			"type" : "STRING",
-			"value" : ""
+			"value" : "/usr/bin/ranlib"
 		},
 		{
 			"name" : "CMAKE_READELF",
@@ -915,7 +783,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "D:/dev/msys64/mingw64/bin/llvm-readelf.exe"
+			"value" : "CMAKE_READELF-NOTFOUND"
 		},
 		{
 			"name" : "CMAKE_ROOT",
@@ -927,7 +795,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Program Files/CMake/share/cmake-3.26"
+			"value" : "/opt/homebrew/Cellar/cmake/3.30.2/share/cmake"
 		},
 		{
 			"name" : "CMAKE_SHARED_LINKER_FLAGS",
@@ -1135,7 +1003,35 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "D:/dev/msys64/mingw64/bin/llvm-strip.exe"
+			"value" : "/usr/bin/strip"
+		},
+		{
+			"name" : "CMAKE_TAPI",
+			"properties" : 
+			[
+				{
+					"name" : "ADVANCED",
+					"value" : "1"
+				},
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a program."
+				}
+			],
+			"type" : "FILEPATH",
+			"value" : "/Library/Developer/CommandLineTools/usr/bin/tapi"
+		},
+		{
+			"name" : "CMAKE_UNAME",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "uname command"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "/usr/bin/uname"
 		},
 		{
 			"name" : "CMAKE_VERBOSE_MAKEFILE",
@@ -1154,18 +1050,6 @@
 			"value" : "FALSE"
 		},
 		{
-			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "linker supports push/pop state"
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "FALSE"
-		},
-		{
 			"name" : "gradflow_BINARY_DIR",
 			"properties" : 
 			[
@@ -1175,7 +1059,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "D:/src/my_rust_mat/matlib_cpp/build"
+			"value" : "/Users/mine268/Source/mat/build"
 		},
 		{
 			"name" : "gradflow_IS_TOP_LEVEL",
@@ -1199,7 +1083,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "D:/src/my_rust_mat/matlib_cpp"
+			"value" : "/Users/mine268/Source/mat"
 		}
 	],
 	"kind" : "cache",

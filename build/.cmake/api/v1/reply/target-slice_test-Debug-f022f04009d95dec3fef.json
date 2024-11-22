@@ -2,10 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "access_test.exe"
-		},
-		{
-			"path" : "access_test.pdb"
+			"path" : "slice_test"
 		}
 	],
 	"backtrace" : 1,
@@ -28,7 +25,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 14,
+				"line" : 16,
 				"parent" : 0
 			},
 			{
@@ -45,14 +42,14 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -std=gnu++17"
+					"fragment" : "-g -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk"
 				}
 			],
 			"includes" : 
 			[
 				{
 					"backtrace" : 2,
-					"path" : "D:/src/my_rust_mat/matlib_cpp/include"
+					"path" : "/Users/mine268/Source/mat/include"
 				}
 			],
 			"language" : "CXX",
@@ -70,7 +67,7 @@
 			]
 		}
 	],
-	"id" : "access_test::@6890427a1f51a3e7e1df",
+	"id" : "slice_test::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -82,16 +79,12 @@
 			{
 				"fragment" : "",
 				"role" : "flags"
-			},
-			{
-				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
-				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"
 	},
-	"name" : "access_test",
-	"nameOnDisk" : "access_test.exe",
+	"name" : "slice_test",
+	"nameOnDisk" : "slice_test",
 	"paths" : 
 	{
 		"build" : ".",
@@ -112,7 +105,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "test/access_test.cc",
+			"path" : "test/slice_test.cc",
 			"sourceGroupIndex" : 0
 		}
 	],

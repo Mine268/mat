@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/compile_test.dir/test/compile_test.cc.obj"
-  "CMakeFiles/compile_test.dir/test/compile_test.cc.obj.d"
+  "CMakeFiles/compile_test.dir/test/compile_test.cc.o"
+  "CMakeFiles/compile_test.dir/test/compile_test.cc.o.d"
   "libcompile_test.a"
   "libcompile_test.pdb"
 )
