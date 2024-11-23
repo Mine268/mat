@@ -1,2 +1,0 @@
-/usr/bin/ar qc libcompile_test.a CMakeFiles/compile_test.dir/test/compile_test.cc.o
-/usr/bin/ranlib libcompile_test.a

@@ -1,6 +1,0 @@
-/Users/mine268/Source/mat/build/CMakeFiles/compile_test.dir
-/Users/mine268/Source/mat/build/CMakeFiles/access_test.dir
-/Users/mine268/Source/mat/build/CMakeFiles/computation_test.dir
-/Users/mine268/Source/mat/build/CMakeFiles/slice_test.dir
-/Users/mine268/Source/mat/build/CMakeFiles/edit_cache.dir
-/Users/mine268/Source/mat/build/CMakeFiles/rebuild_cache.dir
