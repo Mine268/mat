@@ -1,7 +1,5 @@
 #include "mat.hpp"
-#include "decomposition.hpp"
 #include "utility.hpp"
-#include <stdatomic.h>
 
 
 using namespace matlib;
