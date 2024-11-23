@@ -22,10 +22,9 @@ template<typename T>
 auto epsilon = T{};
 
 template<>
-inline float epsilon<float> = 1e-8f;
-
+inline float epsilon<float> = 1e-6;
 template<>
-inline double epsilon<double> = 1e-8;
+inline double epsilon<double> = 1e-6;
 
 template<typename T>
 bool MultiplyOverflow(T a, T b) {
@@ -53,5 +52,11 @@ template<>
 inline bool ValueEq<double>(double a, double b) {
     return (std::abs(a - b) < epsilon<double>);
 }
+
+template<typename V>
+struct Default {
+    static constexpr V zero = V{};
+    static constexpr V one = static_cast<V>(1);
+};
 
 }

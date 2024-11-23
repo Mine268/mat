@@ -1,3 +1,4 @@
+#include "utility.hpp"
 #include "common.hpp"
 
 namespace matlib {
