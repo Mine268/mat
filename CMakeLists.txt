@@ -9,8 +9,16 @@ set(TEST test/)
 
 include_directories(${INCLUDE})
 
+# Range
+add_library(Range ${SRC}/range.cc)
+
 # tests
 add_library(compile_test ${TEST}/compile_test.cc)
 add_executable(access_test ${TEST}/access_test.cc)
 add_executable(computation_test ${TEST}/computation_test.cc)
 add_executable(slice_test ${TEST}/slice_test.cc)
+
+target_link_libraries(compile_test Range)
+target_link_libraries(access_test Range)
+target_link_libraries(computation_test Range)
+target_link_libraries(slice_test Range)

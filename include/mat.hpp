@@ -10,11 +10,12 @@
 // matlib
 #include "common.hpp"
 #include "utility.hpp"
+#include "range.hpp"
 
 namespace matlib {
 
 template<typename> class Matrix;
-template<typename, typename > class Slice;
+template<typename, typename> class Slice;
 
 /// Matrix
 template<typename V>
@@ -56,21 +57,6 @@ private:
     std::pair<Size_T, Size_T> shape;
 };
 
-/// Range
-struct Range {
-    Size_T a{}, b{};
-    Range(Size_T a_ = 0, Size_T b_ = 0) {
-        a = std::min(a_, b_);
-        b = std::max(a_, b_);
-    }
-    bool empty() const {
-        return a <= b;
-    }
-    bool include(const Range& rhs) {
-        return a <= rhs.a && b >= rhs.b;
-    }
-};
-
 /// Slice
 template<
     typename V,
@@ -98,67 +84,13 @@ private:
     std::reference_wrapper<MatType> source;
 };
 
+}
 
 /// ======================================
 /// implementation
 
-/// Slice
-template<typename V, typename MatType>
-typename Slice<V, MatType>::ElementTypeRef Slice<V, MatType>::at(Size_T i, Size_T j) {
-    // ASSERT_MSG(source, "Invalid reference to source matrix.");
-    ASSERT_MSG(i <= rowRange.b - rowRange.a && j <= colRange.b - colRange.a,
-        "Bad indices out of slice.");
-    auto r = i + rowRange.a;
-    auto c = j + colRange.a;
-    return source.get().unsafe_at(r, c);
-}
-
-template<typename V, typename MatType>
-typename Slice<V, MatType>::ElementTypeRef Slice<V, MatType>::unsafe_at(Size_T i, Size_T j) {
-    auto r = i + rowRange.a;
-    auto c = j + colRange.a;
-    return source.get().unsafe_at(r, c);
-}
-
-template<typename V, typename MatType>
-typename Slice<V, MatType>::SubSliceType
-Slice<V, MatType>::slice(Size_T ra, Size_T rb, Size_T ca, Size_T cb) {
-    Range newRowRange {ra, rb};
-    Range newColRange {ca, cb};
-    // ASSERT_MSG(source, "Invalid reference to source matrix");
-    ASSERT_MSG(newRowRange.b <= rowRange.b - rowRange.a
-        && newColRange.b <= colRange.b - colRange.a,
-        "Sub-slice exceeds the origin one.");
-    return typename Slice<V, MatType>::SubSliceType (
-        {rowRange.a + newRowRange.a, rowRange.a + newRowRange.b},
-        {colRange.a + newColRange.a, colRange.a + newColRange.b},
-        source
-    );
-}
-
-template<typename V, typename MatType>
-Matrix<V> Slice<V, MatType>::to_mat() {
-    Matrix<V> retval (
-        rowRange.b - rowRange.a + 1,
-        colRange.b - colRange.a + 1);
-    const auto &origin_mat = this->source.get();
-    for (Size_T i = rowRange.a; i <= rowRange.b; ++i) {
-        for (Size_T j = colRange.a; j <= colRange.b; ++j) {
-            retval.unsafe_at(i - rowRange.a, j - colRange.a) = origin_mat.unsafe_at(i, j);
-        }
-    }
-    return retval;
-}
-
-template<typename V, typename MatType>
-Slice<V, MatType>::Slice(Range rowRange_, Range colRange_, MatType &mat)
-    : source(mat)
-{
-    rowRange = rowRange_;
-    colRange = colRange_;
-}
-
-/// Matrix
+/// Matrix impl
+namespace matlib {
 
 template<typename V>
 Slice<V, Matrix<V>> Matrix<V>::slice(Size_T ra, Size_T rb, Size_T ca, Size_T cb) {
@@ -187,138 +119,6 @@ Matrix<V> Matrix<V>::transpose() const {
             retval.unsafe_at(i, j) = this->unsafe_at(j, i);
         }
     }
-    return retval;
-}
-
-/// basic operations
-template<
-    typename V,
-    typename U>
-bool operator==(const Matrix<V> &lhs, const Matrix<U> &rhs) {
-    if (&lhs == &rhs) {
-        return true;
-    }
-
-    if (lhs.get_shape() != rhs.get_shape()) {
-        return false;
-    }
-
-    auto shape = lhs.get_shape();
-    auto tot = shape.first * shape.second;
-
-    auto p_lhs = lhs.raw_data();
-    auto p_rhs = rhs.raw_data();
-    for (Size_T i = 0; i < tot; ++i) {
-        if (!ValueEq(p_lhs[i], p_rhs[i])) {
-            return false;
-        }
-    }
-
-    return true;
-}
-
-template<
-    typename V,
-    typename U>
-bool operator!=(const Matrix<V> &lhs, const Matrix<U> &rhs) {
-    return !(lhs == rhs);
-}
-
-template<
-    typename V,
-    typename U>
-auto operator+(const Matrix<V> &lhs, const Matrix<U> &rhs) {
-    ASSERT_MSG(lhs.get_shape() == rhs.get_shape(), "Shape must match for addition.");
-    Matrix<decltype(V{} + U{})> retval(lhs.get_shape());
-    auto shape = lhs.get_shape();
-    auto tot = shape.first * shape.second;
-
-    auto p_lhs = lhs.raw_data();
-    auto p_rhs = rhs.raw_data();
-    auto p_ret = retval.raw_data();
-
-    for (Size_T i = 0; i < tot; ++i) {
-        p_ret[i] = p_lhs[i] + p_rhs[i];
-    }
-
-    return retval;
-}
-
-template<
-    typename V,
-    typename U>
-auto operator-(const Matrix<V> &lhs, const Matrix<U> &rhs) {
-    ASSERT_MSG(lhs.get_shape() == rhs.get_shape(), "Shape must match for subtraction.");
-    Matrix<decltype(V{} + U{})> retval(lhs.get_shape());
-    auto shape = lhs.get_shape();
-    auto tot = shape.first * shape.second;
-
-    auto p_lhs = lhs.raw_data();
-    auto p_rhs = rhs.raw_data();
-    auto p_ret = retval.raw_data();
-
-    for (Size_T i = 0; i < tot; ++i) {
-        p_ret[i] = p_lhs[i] - p_rhs[i];
-    }
-
-    return retval;
-}
-
-template<
-    typename V,
-    typename U>
-auto operator*(U k, const Matrix<V> &rhs) {
-    auto shape = rhs.get_shape();
-    Matrix<V> retval (shape);
-
-    auto target_it = retval.raw_begin();
-    auto source_it = rhs.raw_const_begin();
-
-    for (; target_it != retval.raw_end(); ++target_it, ++source_it) {
-        *target_it = k * *source_it;
-    }
-    return retval;
-}
-
-template<
-    typename V,
-    typename U>
-auto operator*(const Matrix<V> &rhs, U k) {
-    auto shape = rhs.get_shape();
-    Matrix<V> retval (shape);
-
-    auto target_it = retval.raw_begin();
-    auto source_it = rhs.raw_const_begin();
-
-    for (; target_it != retval.raw_end(); ++target_it, ++source_it) {
-        *target_it = k * *source_it;
-    }
-    return retval;
-}
-
-// TODO: directly index on raw array to accelerate
-template<
-    typename V,
-    typename U>
-auto operator*(const Matrix<V> &lhs, const Matrix<U> &rhs) {
-    using Return_T = decltype(decltype(V{} + U{}){} * decltype(V{} + U{}){});
-    ASSERT_MSG(lhs.get_shape().second == rhs.get_shape().first,
-        "Shape must match for multiplication.");
-    
-    auto lshape = lhs.get_shape(); 
-    auto rshape = rhs.get_shape();
-
-    Matrix<Return_T> retval(lshape.first, rshape.second);
-    for (Size_T r = 0; r < lshape.first; ++r) {
-        for (Size_T c = 0; c < rshape.second; ++c) {
-            Return_T cur{};
-            for (Size_T k = 0; k < lshape.second; ++k) {
-                cur = cur + lhs.unsafe_at(r, k) * rhs.unsafe_at(k, c);
-            }
-            retval.unsafe_at(r, c) = cur;
-        }
-    }
-
     return retval;
 }
 
@@ -419,3 +219,65 @@ typename Matrix<V>::ConstRawIterator Matrix<V>::raw_const_end() const {
 }
 
 }
+/// Slice impl
+namespace matlib {
+
+template<typename V, typename MatType>
+typename Slice<V, MatType>::ElementTypeRef Slice<V, MatType>::at(Size_T i, Size_T j) {
+    // ASSERT_MSG(source, "Invalid reference to source matrix.");
+    ASSERT_MSG(i <= rowRange.b - rowRange.a && j <= colRange.b - colRange.a,
+        "Bad indices out of slice.");
+    auto r = i + rowRange.a;
+    auto c = j + colRange.a;
+    return source.get().unsafe_at(r, c);
+}
+
+template<typename V, typename MatType>
+typename Slice<V, MatType>::ElementTypeRef Slice<V, MatType>::unsafe_at(Size_T i, Size_T j) {
+    auto r = i + rowRange.a;
+    auto c = j + colRange.a;
+    return source.get().unsafe_at(r, c);
+}
+
+template<typename V, typename MatType>
+typename Slice<V, MatType>::SubSliceType
+Slice<V, MatType>::slice(Size_T ra, Size_T rb, Size_T ca, Size_T cb) {
+    Range newRowRange {ra, rb};
+    Range newColRange {ca, cb};
+    // ASSERT_MSG(source, "Invalid reference to source matrix");
+    ASSERT_MSG(newRowRange.b <= rowRange.b - rowRange.a
+        && newColRange.b <= colRange.b - colRange.a,
+        "Sub-slice exceeds the origin one.");
+    return typename Slice<V, MatType>::SubSliceType (
+        {rowRange.a + newRowRange.a, rowRange.a + newRowRange.b},
+        {colRange.a + newColRange.a, colRange.a + newColRange.b},
+        source
+    );
+}
+
+template<typename V, typename MatType>
+Matrix<V> Slice<V, MatType>::to_mat() {
+    Matrix<V> retval (
+        rowRange.b - rowRange.a + 1,
+        colRange.b - colRange.a + 1);
+    const auto &origin_mat = this->source.get();
+    for (Size_T i = rowRange.a; i <= rowRange.b; ++i) {
+        for (Size_T j = colRange.a; j <= colRange.b; ++j) {
+            retval.unsafe_at(i - rowRange.a, j - colRange.a) = origin_mat.unsafe_at(i, j);
+        }
+    }
+    return retval;
+}
+
+template<typename V, typename MatType>
+Slice<V, MatType>::Slice(Range rowRange_, Range colRange_, MatType &mat)
+    : source(mat)
+{
+    rowRange = rowRange_;
+    colRange = colRange_;
+}
+
+}
+
+// support arithmetic operations
+#include "arithmetic.hpp"
