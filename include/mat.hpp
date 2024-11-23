@@ -2,7 +2,6 @@
 
 // std
 #include <functional>
-#include <memory>
 #include <optional>
 #include <utility>
 #include <vector>
@@ -89,13 +88,14 @@ public:
     ElementTypeRef at(Size_T, Size_T);
     ElementTypeRef unsafe_at(Size_T, Size_T);
     SubSliceType slice(Size_T, Size_T, Size_T, Size_T);
+    Matrix<V> to_mat();
 private:
     explicit Slice(Range, Range, MatType &);
 
 // member
 private:
     Range rowRange, colRange;
-    std::shared_ptr<MatType> source;
+    std::reference_wrapper<MatType> source;
 };
 
 
@@ -105,19 +105,19 @@ private:
 /// Slice
 template<typename V, typename MatType>
 typename Slice<V, MatType>::ElementTypeRef Slice<V, MatType>::at(Size_T i, Size_T j) {
-    ASSERT_MSG(source, "Invalid reference to source matrix.");
+    // ASSERT_MSG(source, "Invalid reference to source matrix.");
     ASSERT_MSG(i <= rowRange.b - rowRange.a && j <= colRange.b - colRange.a,
         "Bad indices out of slice.");
     auto r = i + rowRange.a;
     auto c = j + colRange.a;
-    return source.get()->unsafe_at(r, c);
+    return source.get().unsafe_at(r, c);
 }
 
 template<typename V, typename MatType>
 typename Slice<V, MatType>::ElementTypeRef Slice<V, MatType>::unsafe_at(Size_T i, Size_T j) {
     auto r = i + rowRange.a;
     auto c = j + colRange.a;
-    return source.get()->unsafe_at(r, c);
+    return source.get().unsafe_at(r, c);
 }
 
 template<typename V, typename MatType>
@@ -125,20 +125,34 @@ typename Slice<V, MatType>::SubSliceType
 Slice<V, MatType>::slice(Size_T ra, Size_T rb, Size_T ca, Size_T cb) {
     Range newRowRange {ra, rb};
     Range newColRange {ca, cb};
-    ASSERT_MSG(source, "Invalid reference to source matrix");
+    // ASSERT_MSG(source, "Invalid reference to source matrix");
     ASSERT_MSG(newRowRange.b <= rowRange.b - rowRange.a
         && newColRange.b <= colRange.b - colRange.a,
         "Sub-slice exceeds the origin one.");
     return typename Slice<V, MatType>::SubSliceType (
         {rowRange.a + newRowRange.a, rowRange.a + newRowRange.b},
         {colRange.a + newColRange.a, colRange.a + newColRange.b},
-        *source.get()
+        source
     );
 }
 
 template<typename V, typename MatType>
+Matrix<V> Slice<V, MatType>::to_mat() {
+    Matrix<V> retval (
+        rowRange.b - rowRange.a + 1,
+        colRange.b - colRange.a + 1);
+    const auto &origin_mat = this->source.get();
+    for (Size_T i = rowRange.a; i <= rowRange.b; ++i) {
+        for (Size_T j = colRange.a; j <= colRange.b; ++j) {
+            retval.unsafe_at(i - rowRange.a, j - colRange.a) = origin_mat.unsafe_at(i, j);
+        }
+    }
+    return retval;
+}
+
+template<typename V, typename MatType>
 Slice<V, MatType>::Slice(Range rowRange_, Range colRange_, MatType &mat)
-    : source(std::make_shared<MatType>(mat))
+    : source(mat)
 {
     rowRange = rowRange_;
     colRange = colRange_;
